@@ -41,8 +41,6 @@ class RedditPlugin extends CordlrPlugin {
 
     if (this.pluginConfig.numPosts === undefined || this.pluginConfig.numPosts < 1 || this.pluginConfig.numPosts > 25)
       this.pluginConfig.numPosts = 5;
-
-    console.log(this.pluginConfig);
   }
 
   getPosts(message, args, flags) {
