@@ -1,0 +1,28 @@
+{
+  "name": "cordlr-reddit",
+  "version": "0.0.1",
+  "description": "Cordlr Plugin that lists posts from subreddits on reddit.com.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciruz/cordlr-reddit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ciruz/cordlr-reddit/issues"
+  },
+  "keywords": [
+    "cordlr",
+    "reddit",
+    "plugin"
+  ],
+  "author": "ciruz",
+  "license": "MIT",
+  "homepage": "https://github.com/ciruz/cordlr-reddit",
+  "dependencies": {
+    "cordlr-plugin": "0.0.5",
+    "request": "^2.81.0"
+  }
+}
