@@ -6,7 +6,7 @@
 
 You can install **cordlr-reddit** as a npm package via:
 
-``npm install cordlr-plugin-name --save``
+``npm install cordlr-reddit --save``
 
 Now append your ``corldr.json`` file, and add ``cordlr-reddit`` as a new plugin that Cordlr can load it.
 

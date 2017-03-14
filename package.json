@@ -1,6 +1,6 @@
 {
   "name": "cordlr-reddit",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Cordlr Plugin that lists posts from subreddits on reddit.com.",
   "main": "index.js",
   "scripts": {
