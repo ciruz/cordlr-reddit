@@ -71,10 +71,12 @@ class RedditPlugin extends CordlrPlugin {
         if (redditBody.data.children.length > 0) {
           let embedMessages = []
           redditBody.data.children.forEach(function (thread) {
-            embedMessages.push({
-              name: (thread.data.title.length < 200) ? thread.data.title : thread.data.title.substr(0, 200) + '...',
-              value: decodeURIComponent(thread.data.url)
-            })
+            if (thread.data.stickied === false) {
+              embedMessages.push({
+                name: (thread.data.title.length < 200) ? thread.data.title : thread.data.title.substr(0, 200) + '...',
+                value: decodeURIComponent(thread.data.url)
+              })
+            }
           })
 
           let embed = {
