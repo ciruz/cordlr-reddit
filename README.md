@@ -1,6 +1,6 @@
 # cordlr-reddit
 
-> Lists posts from subreddits on [reddit.com](https://www.reddit.com) for Cordlr.
+> Cordlr Plugin that lists posts from subreddits on [reddit.com](https://www.reddit.com).
 
 ## Installation
 
@@ -27,23 +27,48 @@ Now append your ``corldr.json`` file, and add ``cordlr-reddit`` as a new plugin 
 
 ## Usage
 
-Lists the 10 hot posts from a subreddit:
+Lists hot posts from a subreddit:
 
 ``!r <subreddit>``
 
 **Example Usage:** ``!r funny``
 
-Lists the 10 top posts from a subreddit (Past 24 hours):
+Lists top posts from a subreddit (Past 24 hours):
 
 ``!r top <subreddit>``
 
 **Example Usage:** ``!r top videos``
 
-Lists the 10 latest posts from a subreddit:
+Lists latest posts from a subreddit:
 
 ``!r new <subreddit>``
 
 **Example Usage:** ``!r new pics``
+
+
+## Configuration (Optional)
+
+By default this plugins fetches **5** posts from a subreddit. You can overwrite the number of posts to any number between ``1`` and ``100`` in the ``cordlr.json`` file.
+
+Example configuration with 3 posts:
+
+```javascript
+// cordlr.json
+
+{
+  "token":"YourTokenHere",
+  "prefix":"!",
+  "loader":"cordlr-loader",
+  "plugins":[
+    // ...
+    "cordlr-help2",
+    "cordlr-reddit"
+  ],
+  "cordlr-reddit": { // add this
+    "numPosts": 3 // any number between 1 an 100
+  }
+}
+```
 
 ## License
 

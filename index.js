@@ -16,22 +16,33 @@ class RedditPlugin extends CordlrPlugin {
       "r": {
         "usage": "<subreddit>",
         "function": "getPosts",
-        "description": "Lists the 10 hot posts from a subreddit",
+        "description": "Lists hot posts from a subreddit",
         "permissions": []
       },
       'r top': {
         'usage': '<subreddit>',
         'function': 'getPosts',
-        'description': 'Lists the 10 top posts from a subreddit',
+        'description': 'Lists top posts from a subreddit',
         'permissions': []
       },
       'r new': {
         'usage': '<subreddit>',
         'function': 'getPosts',
-        'description': 'Lists the 10 latest posts from a subreddit',
+        'description': 'Lists latest posts from a subreddit',
         'permissions': []
       },
     }
+
+    this.resolveConfiguration()
+  }
+
+  resolveConfiguration() {
+    this.pluginConfig = this.config['cordlr-reddit'] || {}
+
+    if (this.pluginConfig.numPosts === undefined || this.pluginConfig.numPosts < 1 || this.pluginConfig.numPosts > 25)
+      this.pluginConfig.numPosts = 5;
+
+    console.log(this.pluginConfig);
   }
 
   getPosts(message, args, flags) {
@@ -47,16 +58,16 @@ class RedditPlugin extends CordlrPlugin {
 
       switch (type) {
         case 'top':
-          requestUrl += '/top.json?limit=10'
-          embedDescription = `Top 10 Posts from **${subreddit}**:`
+          requestUrl += '/top.json?limit=' + this.pluginConfig.numPosts
+          embedDescription = `Top ${this.pluginConfig.numPosts} Posts from **${subreddit}**:`
           break
         case 'new':
-          requestUrl += '/new.json?limit=10'
-          embedDescription = `Latest 10 Posts from **${subreddit}**:`
+          requestUrl += '/new.json?limit=' + this.pluginConfig.numPosts
+          embedDescription = `Latest ${this.pluginConfig.numPosts} Posts from **${subreddit}**:`
           break
         default:
-          requestUrl += '.json?limit=10'
-          embedDescription = `Hot 10 Posts from **${subreddit}**:`
+          requestUrl += '.json?limit=' + this.pluginConfig.numPosts
+          embedDescription = `Hot ${this.pluginConfig.numPosts} Posts from **${subreddit}**:`
           break
       }
 
